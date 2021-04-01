@@ -32,7 +32,7 @@ AppAsset::register($this);
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => '',
+            'class' => 'navbar-expand-lg navbar-dark bg-dark fixed-top',
         ],
     ]);
     $menuItems = [
@@ -44,26 +44,34 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
+        $menuItems[] = [
+            'label' => Yii::$app->user->identity->getDisplayName(),
+//            'dropDownOptions' => [
+//                'class' => 'dropdown-menu-right'
+//            ],
+            'items' => [
+                [
+                    'label' => 'Profile',
+                    'url' => ['/profile/index'],
+                ],
+                [
+                    'label' => 'Logout',
+                    'url' => ['/site/logout'],
+                    'linkOptions' => [
+                        'data-method' => 'post'
+                    ],
+                ]
+            ]
+        ];
     }
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav ml-auto'],
         'items' => $menuItems,
     ]);
     NavBar::end();
     ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+    <div class="">
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
@@ -71,9 +79,15 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+        <div class="row">
+            <div class="col">
+                <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+            </div>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+            <div class="col text-right">
+                <p class="pull-right">Created by <a href="https://youtube.com/TheCodeholic" target="_blank">TheCodeholic</a></p>
+            </div>
+        </div>
     </div>
 </footer>
 

@@ -1,120 +1,139 @@
-html,
-body {
+section {
+    width: 100%;
+    height: 100vh;
+}
+
+.swiper-container {
+    width: 100%;
     height: 100%;
 }
 
-.wrap {
-    min-height: 100%;
-    height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
-}
-
-.wrap > .container {
-    padding: 70px 15px 20px;
-}
-
-.footer {
-    height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
-}
-
-.jumbotron {
-    text-align: center;
-    background-color: transparent;
-}
-
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
-
-.not-set {
-    color: #c55;
-    font-style: italic;
-}
-
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: normal;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    overflow: hidden;
+}
+.slide-image {
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: calc(100% + 400px);
+    height: calc(100% + 400px);
+    background-position: 50% 50%;
+    background-size: cover;
+}
+.slide-title {
+    font-size: 4rem;
     line-height: 1;
-    padding-left: 5px;
+    max-width: 50%;
+    white-space: normal;
+    word-break: break-word;
+    color: #FFF;
+    z-index: 100;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
 }
-
-a.asc:after {
-    content: "\e151";
-}
-
-a.desc:after {
-    content: "\e152";
-}
-
-.sort-numerical a.asc:after {
-    content: "\e153";
-}
-
-.sort-numerical a.desc:after {
-    content: "\e154";
-}
-
-.sort-ordinal a.asc:after {
-    content: "\e155";
-}
-
-.sort-ordinal a.desc:after {
-    content: "\e156";
-}
-
-.grid-view td {
-    white-space: nowrap;
-}
-
-.grid-view .filters input,
-.grid-view .filters select {
-    min-width: 50px;
-}
-
-.hint-block {
-    display: block;
-    margin-top: 5px;
-    color: #999;
-}
-
-.error-summary {
-    color: #a94442;
-    background: #fdf7f7;
-    border-left: 3px solid #eed3d7;
-    padding: 10px 20px;
-    margin: 0 0 15px 0;
-}
-
-/* align the logout "link" (button in form) of the navbar */
-.nav li > form > button.logout {
-    padding: 15px;
-    border: none;
-}
-
-@media(max-width:767px) {
-    .nav li > form > button.logout {
-        display:block;
-        text-align: left;
-        width: 100%;
-        padding: 10px 15px;
+@media (min-width: 45em) {
+    .slide-title {
+        font-size: 7vw;
+        max-width: none;
     }
 }
-
-.nav > li > form > button.logout:focus,
-.nav > li > form > button.logout:hover {
-    text-decoration: none;
+.slide-title span {
+    white-space: pre;
+    display: inline-block;
+    opacity: 0;
 }
 
-.nav > li > form > button.logout:focus {
-    outline: none;
+.slideshow {
+    position: relative;
+}
+.slideshow-pagination {
+    position: absolute;
+    bottom: 5rem;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transition: .3s opacity;
+    z-index: 10;
+}
+.slideshow-pagination-item {
+    display: flex;
+    align-items: center;
+}
+.slideshow-pagination-item .pagination-number {
+    opacity: 0.5;
+}
+.slideshow-pagination-item:hover, .slideshow-pagination-item:focus {
+    cursor: pointer;
+}
+.slideshow-pagination-item:last-of-type .pagination-separator {
+    width: 0;
+}
+.slideshow-pagination-item.active .pagination-number {
+    opacity: 1;
+}
+.slideshow-pagination-item.active .pagination-separator {
+    width: 10vw;
+}
+.slideshow-navigation-button {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 5rem;
+    z-index: 1000;
+    transition: all .3s ease;
+    color: #FFF;
+}
+.slideshow-navigation-button:hover, .slideshow-navigation-button:focus {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+}
+.slideshow-navigation-button.prev {
+    left: 0;
+}
+.slideshow-navigation-button.next {
+    right: 0;
+}
+
+.pagination-number {
+    font-size: 1.8rem;
+    color: #FFF;
+    font-family: 'Oswald', sans-serif;
+    padding: 0 0.5rem;
+}
+
+.pagination-separator {
+    display: none;
+    position: relative;
+    width: 40px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.25);
+    transition: all .3s ease;
+}
+@media (min-width: 45em) {
+    .pagination-separator {
+        display: block;
+    }
+}
+.pagination-separator-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    transform-origin: 0 0;
 }
