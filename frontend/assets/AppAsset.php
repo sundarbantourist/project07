@@ -14,11 +14,12 @@ class AppAsset extends AssetBundle
     public $css = [
         'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css',
         'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css',
-        'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css',
         'css/site.css',
     ];
     public $js = [
-        'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js',
         'js\script.js',
     ];
     public $depends = [
