@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Slider;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -74,7 +75,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $slider = Slider::find()->where(['status'=>1])->all();
+        return $this->render('index',['slider'=>$slider]);
     }
 
     /**

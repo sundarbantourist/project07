@@ -31,4 +31,11 @@ class SliderQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    /**
+     * @return \common\models\query\SliderQuery
+     */
+    public function published(){
+        return $this->andWhere(['status'=>1]);
+    }
 }
